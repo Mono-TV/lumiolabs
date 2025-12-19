@@ -8,6 +8,51 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Light theme (default) */
+            --bg-primary: #f5f5f7;
+            --bg-secondary: #ffffff;
+            --bg-card: rgba(255, 255, 255, 0.8);
+            --bg-card-hover: rgba(255, 255, 255, 0.95);
+            --border-card: rgba(0, 0, 0, 0.08);
+            --border-card-hover: rgba(0, 0, 0, 0.12);
+            --text-primary: #1d1d1f;
+            --text-secondary: #86868b;
+            --text-tertiary: #6e6e73;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --badge-live-bg: rgba(52, 199, 89, 0.12);
+            --badge-live-text: #248a3d;
+            --badge-live-border: rgba(52, 199, 89, 0.3);
+            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.08);
+            --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.12);
+            --gradient-orb-1: rgba(0, 113, 227, 0.08);
+            --gradient-orb-2: rgba(168, 85, 247, 0.06);
+            --gradient-orb-3: rgba(236, 72, 153, 0.05);
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #000000;
+            --bg-secondary: #1d1d1f;
+            --bg-card: rgba(38, 38, 40, 0.8);
+            --bg-card-hover: rgba(48, 48, 51, 0.9);
+            --border-card: rgba(255, 255, 255, 0.08);
+            --border-card-hover: rgba(255, 255, 255, 0.15);
+            --text-primary: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --text-tertiary: #86868b;
+            --accent: #2997ff;
+            --accent-hover: #40a9ff;
+            --badge-live-bg: rgba(48, 209, 88, 0.15);
+            --badge-live-text: #30d158;
+            --badge-live-border: rgba(48, 209, 88, 0.3);
+            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.4);
+            --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.5);
+            --gradient-orb-1: rgba(41, 151, 255, 0.1);
+            --gradient-orb-2: rgba(168, 85, 247, 0.08);
+            --gradient-orb-3: rgba(236, 72, 153, 0.06);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -15,296 +60,307 @@
         }
 
         body {
-            font-family: 'Red Hat Display', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Red Hat Display', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
             min-height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            color: #1a1a2e;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
             overflow-x: hidden;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Floating orbs for depth */
+        /* Subtle gradient orbs */
         .bg-orb {
             position: fixed;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.5;
+            filter: blur(100px);
             pointer-events: none;
             z-index: 0;
+            transition: background 0.3s ease;
         }
 
         .orb-1 {
-            width: 600px;
-            height: 600px;
-            background: rgba(102, 126, 234, 0.6);
-            top: -200px;
-            left: -200px;
-            animation: float 20s ease-in-out infinite;
+            width: 800px;
+            height: 800px;
+            background: var(--gradient-orb-1);
+            top: -300px;
+            right: -200px;
+            animation: float 30s ease-in-out infinite;
         }
 
         .orb-2 {
-            width: 400px;
-            height: 400px;
-            background: rgba(240, 147, 251, 0.5);
-            bottom: -100px;
-            right: -100px;
+            width: 600px;
+            height: 600px;
+            background: var(--gradient-orb-2);
+            bottom: -200px;
+            left: -200px;
             animation: float 25s ease-in-out infinite reverse;
         }
 
         .orb-3 {
-            width: 300px;
-            height: 300px;
-            background: rgba(118, 75, 162, 0.4);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: float 18s ease-in-out infinite;
+            width: 500px;
+            height: 500px;
+            background: var(--gradient-orb-3);
+            top: 40%;
+            left: 30%;
+            animation: float 35s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            25% { transform: translate(30px, -30px) scale(1.05); }
-            50% { transform: translate(-20px, 20px) scale(0.95); }
-            75% { transform: translate(20px, 10px) scale(1.02); }
+            33% { transform: translate(40px, -40px) scale(1.05); }
+            66% { transform: translate(-30px, 30px) scale(0.95); }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 80px 20px;
             position: relative;
             z-index: 1;
         }
 
+        /* Theme toggle */
+        .theme-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 100;
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-card);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-card);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-card-hover);
+        }
+
+        .theme-toggle svg {
+            width: 22px;
+            height: 22px;
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .theme-toggle .sun-icon {
+            display: none;
+        }
+
+        [data-theme="dark"] .theme-toggle .sun-icon {
+            display: block;
+        }
+
+        [data-theme="dark"] .theme-toggle .moon-icon {
+            display: none;
+        }
+
         header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         .logo {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            color: white;
+            color: var(--text-primary);
             margin-bottom: 12px;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
-            letter-spacing: -0.5px;
-        }
-
-        .logo span {
-            background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: -1.5px;
+            transition: color 0.3s ease;
         }
 
         .tagline {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 1.15rem;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+            transition: color 0.3s ease;
         }
 
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
+            gap: 20px;
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.15);
+            background: var(--bg-card);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
+            border-radius: 20px;
             padding: 32px;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow:
-                0 8px 32px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--border-card);
+            box-shadow: var(--shadow-card);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             text-decoration: none;
             color: inherit;
             display: block;
             position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                135deg,
-                rgba(255, 255, 255, 0.1) 0%,
-                transparent 50%
-            );
-            pointer-events: none;
         }
 
         .service-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            background: rgba(255, 255, 255, 0.22);
-            border-color: rgba(255, 255, 255, 0.4);
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.15),
-                0 0 40px rgba(255, 255, 255, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.4);
+            transform: scale(1.02) translateY(-4px);
+            background: var(--bg-card-hover);
+            border-color: var(--border-card-hover);
+            box-shadow: var(--shadow-card-hover);
         }
 
         .service-icon {
-            width: 64px;
-            height: 64px;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 18px;
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%);
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 20px;
-            font-size: 1.75rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
         }
 
         .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transform: scale(1.08);
         }
 
         .service-title {
-            font-size: 1.35rem;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 10px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+            transition: color 0.3s ease;
         }
 
         .service-description {
-            color: rgba(255, 255, 255, 0.8);
+            color: var(--text-secondary);
             line-height: 1.6;
             font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 24px;
         }
 
         .service-link {
             display: inline-flex;
             align-items: center;
-            color: white;
-            font-weight: 500;
-            margin-top: 18px;
-            font-size: 0.9rem;
-            opacity: 0.9;
-            transition: opacity 0.2s ease;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s ease;
         }
 
-        .service-link::after {
-            content: '\2192';
-            margin-left: 8px;
+        .service-link svg {
+            width: 18px;
+            height: 18px;
+            margin-left: 6px;
             transition: transform 0.3s ease;
         }
 
         .service-card:hover .service-link {
-            opacity: 1;
+            color: var(--accent-hover);
         }
 
-        .service-card:hover .service-link::after {
-            transform: translateX(6px);
+        .service-card:hover .service-link svg {
+            transform: translateX(4px);
         }
 
         .status-badge {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-size: 0.7rem;
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 18px;
-            margin-left: 8px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            letter-spacing: 0.3px;
+            background: var(--badge-live-bg);
+            color: var(--badge-live-text);
+            border: 1px solid var(--badge-live-border);
+            transition: all 0.3s ease;
         }
 
-        .status-live {
-            background: rgba(72, 187, 120, 0.3);
-            color: #9fffcc;
-            border: 1px solid rgba(72, 187, 120, 0.4);
+        .status-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--badge-live-text);
+            border-radius: 50%;
+            margin-right: 6px;
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        .status-beta {
-            background: rgba(237, 187, 59, 0.3);
-            color: #fff3b0;
-            border: 1px solid rgba(237, 187, 59, 0.4);
-        }
-
-        .status-soon {
-            background: rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
         footer {
             text-align: center;
-            margin-top: 80px;
+            margin-top: 100px;
             padding: 30px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
         }
 
         footer a {
-            color: white;
+            color: var(--accent);
             text-decoration: none;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            transition: border-color 0.2s ease;
+            transition: color 0.2s ease;
         }
 
         footer a:hover {
-            border-color: white;
+            color: var(--accent-hover);
         }
 
         @media (max-width: 768px) {
             .logo {
-                font-size: 2.25rem;
+                font-size: 2.5rem;
             }
 
             .container {
-                padding: 40px 16px;
+                padding: 60px 16px;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
             }
 
             .service-card {
                 padding: 24px;
             }
 
-            .orb-1, .orb-2, .orb-3 {
-                opacity: 0.3;
+            .theme-toggle {
+                top: 16px;
+                right: 16px;
+                width: 42px;
+                height: 42px;
             }
         }
 
-        /* Reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            body {
-                animation: none;
-            }
             .bg-orb {
                 animation: none;
             }
             .service-card {
                 transition: none;
+            }
+            .status-badge::before {
+                animation: none;
             }
         }
     </style>
@@ -315,9 +371,19 @@
     <div class="bg-orb orb-2"></div>
     <div class="bg-orb orb-3"></div>
 
+    <!-- Theme toggle -->
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+        </svg>
+        <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+    </button>
+
     <div class="container">
         <header>
-            <h1 class="logo"><span>LumioLabs</span></h1>
+            <h1 class="logo">LumioLabs</h1>
             <p class="tagline">Services Directory</p>
         </header>
 
@@ -327,8 +393,15 @@
                 <div class="service-icon">🎵</div>
                 <h2 class="service-title">TLDR Music</h2>
                 <p class="service-description">Discover trending music across platforms. Curated playlists and charts updated daily.</p>
-                <span class="service-link">Listen Now</span>
-                <span class="status-badge status-live">Live</span>
+                <div class="card-footer">
+                    <span class="service-link">
+                        Listen Now
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </span>
+                    <span class="status-badge">Live</span>
+                </div>
             </a>
 
             <!-- Harvester -->
@@ -336,15 +409,56 @@
                 <div class="service-icon">🌾</div>
                 <h2 class="service-title">Harvester</h2>
                 <p class="service-description">Data collection and aggregation pipeline. Monitor scraping jobs and manage data sources.</p>
-                <span class="service-link">Open Dashboard</span>
-                <span class="status-badge status-live">Live</span>
+                <div class="card-footer">
+                    <span class="service-link">
+                        Open Dashboard
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                        </svg>
+                    </span>
+                    <span class="status-badge">Live</span>
+                </div>
             </a>
         </div>
 
         <footer>
             <p>&copy; 2025 Lumio Labs</p>
-            <p style="margin-top: 10px;">Need help? Contact <a href="mailto:support@lumiolabs.in">support@lumiolabs.in</a></p>
+            <p style="margin-top: 8px;">Need help? Contact <a href="mailto:support@lumiolabs.in">support@lumiolabs.in</a></p>
         </footer>
     </div>
+
+    <script>
+        // Check for saved theme preference or system preference
+        function getPreferredTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                return savedTheme;
+            }
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        // Apply theme
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        }
+
+        // Toggle theme
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            applyTheme(newTheme);
+        }
+
+        // Initialize theme on page load
+        applyTheme(getPreferredTheme());
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches ? 'dark' : 'light');
+            }
+        });
+    </script>
 </body>
 </html>

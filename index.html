@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumio Labs - Services Directory</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .logo span {
+            color: #3498db;
+        }
+
+        .tagline {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .service-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            color: #3498db;
+            font-weight: 500;
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .service-link::after {
+            content: '\2192';
+            margin-left: 8px;
+            transition: margin-left 0.2s ease;
+        }
+
+        .service-card:hover .service-link::after {
+            margin-left: 12px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-top: 15px;
+        }
+
+        .status-live {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-beta {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-soon {
+            background: #e2e3e5;
+            color: #6c757d;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: #95a5a6;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+
+            .services-grid {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="logo">Lumio<span>Labs</span></h1>
+            <p class="tagline">Internal Services Directory</p>
+        </header>
+
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <a href="#" class="service-card">
+                <div class="service-icon">📊</div>
+                <h2 class="service-title">Analytics Dashboard</h2>
+                <p class="service-description">Real-time analytics and reporting for customer support metrics and performance tracking.</p>
+                <span class="service-link">Open Dashboard</span>
+                <span class="status-badge status-live">Live</span>
+            </a>
+
+            <!-- Service 2 -->
+            <a href="#" class="service-card">
+                <div class="service-icon">🤖</div>
+                <h2 class="service-title">Chatbot Admin</h2>
+                <p class="service-description">Manage chatbot workflows, responses, and escalation rules for customer service.</p>
+                <span class="service-link">Open Admin Panel</span>
+                <span class="status-badge status-beta">Beta</span>
+            </a>
+
+            <!-- Service 3 -->
+            <a href="#" class="service-card">
+                <div class="service-icon">📦</div>
+                <h2 class="service-title">Inventory System</h2>
+                <p class="service-description">Track product inventory, warranty registrations, and service parts availability.</p>
+                <span class="service-link">View Inventory</span>
+                <span class="status-badge status-soon">Coming Soon</span>
+            </a>
+
+            <!-- Service 4 -->
+            <a href="#" class="service-card">
+                <div class="service-icon">🔧</div>
+                <h2 class="service-title">Service Network</h2>
+                <p class="service-description">Manage service centers, technician assignments, and installation scheduling.</p>
+                <span class="service-link">Open Portal</span>
+                <span class="status-badge status-soon">Coming Soon</span>
+            </a>
+
+            <!-- Service 5 -->
+            <a href="#" class="service-card">
+                <div class="service-icon">📚</div>
+                <h2 class="service-title">Knowledge Base</h2>
+                <p class="service-description">Internal documentation, troubleshooting guides, and product specifications.</p>
+                <span class="service-link">Browse Docs</span>
+                <span class="status-badge status-live">Live</span>
+            </a>
+
+            <!-- Service 6 -->
+            <a href="#" class="service-card">
+                <div class="service-icon">👥</div>
+                <h2 class="service-title">Team Portal</h2>
+                <p class="service-description">Employee resources, training materials, and internal communications hub.</p>
+                <span class="service-link">Access Portal</span>
+                <span class="status-badge status-beta">Beta</span>
+            </a>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Lumio Labs. Internal use only.</p>
+            <p style="margin-top: 10px;">Need help? Contact <a href="mailto:support@lumiolabs.in">support@lumiolabs.in</a></p>
+        </footer>
+    </div>
+</body>
+</html>

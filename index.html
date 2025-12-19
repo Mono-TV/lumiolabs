@@ -29,28 +29,30 @@
             --gradient-orb-1: rgba(0, 113, 227, 0.08);
             --gradient-orb-2: rgba(168, 85, 247, 0.06);
             --gradient-orb-3: rgba(236, 72, 153, 0.05);
+            --icon-gradient-end: #a855f7;
         }
 
         [data-theme="dark"] {
-            --bg-primary: #000000;
-            --bg-secondary: #1d1d1f;
-            --bg-card: rgba(38, 38, 40, 0.8);
-            --bg-card-hover: rgba(48, 48, 51, 0.9);
+            --bg-primary: #0a0a0b;
+            --bg-secondary: #131316;
+            --bg-card: rgba(19, 19, 22, 0.8);
+            --bg-card-hover: rgba(26, 26, 31, 0.9);
             --border-card: rgba(255, 255, 255, 0.08);
-            --border-card-hover: rgba(255, 255, 255, 0.15);
-            --text-primary: #f5f5f7;
-            --text-secondary: #a1a1a6;
-            --text-tertiary: #86868b;
-            --accent: #2997ff;
-            --accent-hover: #40a9ff;
-            --badge-live-bg: rgba(48, 209, 88, 0.15);
-            --badge-live-text: #30d158;
-            --badge-live-border: rgba(48, 209, 88, 0.3);
-            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.4);
-            --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.5);
-            --gradient-orb-1: rgba(41, 151, 255, 0.1);
-            --gradient-orb-2: rgba(168, 85, 247, 0.08);
-            --gradient-orb-3: rgba(236, 72, 153, 0.06);
+            --border-card-hover: rgba(245, 158, 11, 0.3);
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --text-tertiary: #6b7280;
+            --accent: #f59e0b;
+            --accent-hover: #fbbf24;
+            --badge-live-bg: rgba(245, 158, 11, 0.15);
+            --badge-live-text: #fbbf24;
+            --badge-live-border: rgba(245, 158, 11, 0.3);
+            --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.5);
+            --shadow-card-hover: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 40px rgba(245, 158, 11, 0.1);
+            --gradient-orb-1: rgba(245, 158, 11, 0.08);
+            --gradient-orb-2: rgba(251, 191, 36, 0.06);
+            --gradient-orb-3: rgba(245, 158, 11, 0.04);
+            --icon-gradient-end: #fbbf24;
         }
 
         * {
@@ -217,7 +219,7 @@
         .service-icon {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, var(--accent) 0%, #a855f7 100%);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--icon-gradient-end, #a855f7) 100%);
             border-radius: 14px;
             display: flex;
             align-items: center;
